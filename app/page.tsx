@@ -3,10 +3,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useCallback } from "react";
+import type { Metadata } from "next";
 
 export default function ExtraPage() {
   const scrollToTop = useCallback((e?: React.MouseEvent<HTMLButtonElement>) => {
-    e?.preventDefault?.(); // eが存在する場合のみpreventDefaultを呼び出す
+    e?.preventDefault?.();
     if (typeof window !== "undefined") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -16,14 +17,15 @@ export default function ExtraPage() {
     <>
       {/* Sticky Banner */}
       <div className="fixed top-0 left-0 w-full bg-blue-600 text-white py-7 z-50 shadow-md">
-        <div className="max-w-7xl mx-auto px-7 relative flex items-center">
+        {/* Make the inner content narrower on small screens so the grey background shows at sides */}
+        <div className="max-w-[880px] sm:max-w-3xl md:max-w-7xl mx-auto px-4 sm:px-7 relative flex items-center">
           {/* Left: clickable logo that stays on the same page and scrolls to top */}
           <div className="absolute left-4 flex items-center z-50">
             <button
               onClick={scrollToTop}
               aria-label="Scroll to top"
               className="flex items-center gap-3 focus:outline-none
-                        transform transition-transform duration-200 active:scale-115"
+                        transform transition-transform duration-200 active:scale-105"
             >
               <Image
                 src="/images/logo.png"
@@ -35,20 +37,22 @@ export default function ExtraPage() {
             </button>
           </div>
 
-          {/* Center: profile button (scroll to top only) */}
+          {/* Center: profile button (scroll to top only)
+              Use two variants: short on small screens, full on md+ */}
           <div className="absolute inset-x-0 flex justify-center pointer-events-none">
             <button
               onClick={scrollToTop}
               aria-label="Scroll to top"
-              className="pointer-events-auto text-base text-xl font-normal hover:underline bg-transparent border-none cursor-pointer"
+              className="pointer-events-auto text-base font-normal hover:underline bg-transparent border-none cursor-pointer"
             >
-            ページトップへ - Project Fluence
+              {/* Short label for small screens */}
+              <span className="inline md:hidden text-lg">ページトップへ</span>
+              {/* Full label for md and above */}
+              <span className="hidden md:inline text-xl">ページトップへ - Project Fluence</span>
             </button>
           </div>
 
           {/* Right: optional small link */}
-
-
           <div className="absolute right-4">
             <Link
               href="https://note.com/projectfluence"
@@ -63,13 +67,15 @@ export default function ExtraPage() {
         </div>
       </div>
 
+      {/* Main: keep page background neutral so left/right gray shows.
+          Narrow the inner wrapper on small screens so visible side gutters remain. */}
       <main className="w-full min-h-screen bg-neutral-200 px-1 pt-24 pb-12">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-[880px] sm:max-w-3xl md:max-w-7xl mx-auto px-4">
           {/* Hero */}
-          <section className="bg-white rounded-2xl shadow-lg p-8 md:p-12 grid md:grid-cols-3 gap-6 items-center">
+          <section className="bg-white rounded-2xl shadow-lg p-6 md:p-12 grid md:grid-cols-3 gap-6 items-center">
             <div className="md:col-span-2">
-              <div className="flex items-center gap-6">
-                <div className="w-28 h-28 relative flex-shrink-0">
+              <div className="flex items-center gap-4 md:gap-6">
+                <div className="w-20 h-20 md:w-28 md:h-28 relative flex-shrink-0">
                   <Image
                     src="/images/logo.png"
                     alt="Project Fluence logo large"
@@ -80,24 +86,24 @@ export default function ExtraPage() {
                 </div>
 
                 <div>
-                  <h1 className="text-3xl md:text-4xl font-extrabold leading-tight">Project Fluence</h1>
+                  <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold leading-tight">Project Fluence</h1>
                   <p className="text-sm md:text-base text-gray-600 mt-1">～あなたの未来に、英語の力を～</p>
                 </div>
               </div>
 
-              <p className="mt-6 text-lg">
+              <p className="mt-6 text-base md:text-lg">
                 <strong>Project Fluence</strong>は、英語＋専門分野の力で夢を実現する人を増やすことを目指しています。
               </p>
-              <p className="text-lg mb-1">   
+              <p className="text-base md:text-lg mb-1">
                 私（
-                  <a
-                    className="underline"
-                    href="/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <strong>黒木勇人</strong>
-                  </a>
+                <a
+                  className="underline"
+                  href="https://yutokuroki.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <strong>黒木勇人</strong>
+                </a>
                 ）が効果的な英語学習法をNoteで紹介し、自ら開発した無料の英語学習アプリも提供します。
               </p>
 
@@ -138,7 +144,7 @@ export default function ExtraPage() {
                 <div>
                   <Link
                     aria-label="Scroll to top"
-                    href="/"
+                    href="https://yutokuroki.vercel.app"
                     className="font-medium text-2xl"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -157,7 +163,7 @@ export default function ExtraPage() {
               <div>
                 <Link
                   aria-label="Scroll to top"
-                  href="/"
+                  href="https://yutokuroki.vercel.app"
                   className="underline text-lg"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -173,17 +179,16 @@ export default function ExtraPage() {
                 >
                   →<strong>LinkedIn</strong>
                 </Link>
-              </div>     
+              </div>
             </div>
           </section>
-         
+
+          {/* ...rest unchanged... */}
           {/* About Section */}
           <section id="about" className="mt-8 grid md:grid-cols-2 gap-6">
             <article className="bg-white rounded-2xl p-6 shadow">
-              {/* 見出しとロゴを横並びに */}
               <h2 className="text-2xl font-bold">About</h2>
-              <div className="flex items-center gap-3">
-              </div>
+              <div className="flex items-center gap-3"></div>
 
               <h2 className="mt-2 text-lg text-gray-700 leading-relaxed whitespace-pre-line">
                 <p className="text-lg text-gray-700 leading-relaxed mb-1">
@@ -193,43 +198,30 @@ export default function ExtraPage() {
                  はそんな学びを応援する個人プロジェクトです。  
                  あなたの未来に、英語の力を。
                  </p>
-                
-               
                 <br/>
                 ＊大学生が趣味として開発・運営を行っている個人プロジェクトであるため、
                 アプリの機能が安定していない可能性があります。ご意見やフィードバックは大歓迎です！
               </h2>
             </article>
 
-            {/* App Section */}
             <article className="bg-white rounded-2xl p-6 shadow">
               <h2 className="text-2xl font-semibold mb-4">英語学習アプリ</h2>
               <p className="mt-2 text-neutral-900 text-lg">
                 英単語学習アプリ
                 <a
                     className="underline"
-                    href="https://vocabstream.com"
+                    href="https://vocabstream.vercel.app"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                   <strong>VocabStream</strong>
                 </a>を近日公開します、お楽しみに！
-                <Link href="#">
-                  <Image
-                    src="/VocabStream.png"
-                    alt="Project Fluence logo"
-                    rel="noopener noreferrer"
-                    width={200}
-                    height={200}
-                    className="rounded-md object-cover"
-                  />
-                </Link>
-              </p>          
+                <Link href="#"><Image src="/VocabStream.png" alt="Project Fluence logo" width={200} height={200} className="rounded-md object-cover" /></Link>
+              </p>
             </article>
           </section>
 
           {/* Recent Notes */}
-
           <section id="notes" className="mt-8 bg-white rounded-2xl p-6 shadow">
             <h2 className="text-2xl font-bold">最近のNote記事</h2>
             <ul className="mt-4 grid sm:grid-cols-2 gap-3">
@@ -238,8 +230,7 @@ export default function ExtraPage() {
             </ul>
           </section>
 
-          {/* ...rest unchanged... */}
-                     {/* なぜ英語を学ぶのか */}
+          {/* なぜ英語を学ぶのか */}
           <section id="english-motivation" className="mt-8 bg-white rounded-2xl p-6 shadow">
             <h2 className="text-2xl font-bold">なぜ英語を学ぶのか</h2>
             <p className="mt-2 text-gray-700 leading-relaxed">
@@ -252,7 +243,6 @@ export default function ExtraPage() {
                 これほどリターンの大きいスキルは他に多くありません。
               </p>
           </section>
-
 
            {/* 英語の学習法について */}
           <section id="method" className="mt-8 bg-white rounded-2xl p-6 shadow"> 
@@ -314,7 +304,16 @@ export default function ExtraPage() {
                         単語を日本語訳で覚えるのではなく、英語の定義や例文と結びつけます。
                         <br />例： comfortable → “A chair is comfortable if it feels nice and soft.”
                         <br />英英辞書や赤シートを活用し、難しい説明は自分で簡単に言い換えると効果的です。
-                        <br />この学習法を効率化するために、英単語アプリ <strong>Vocabstream</strong> を開発しました。是非お試しください！
+                        <br />この学習法を効率化するために、英単語アプリ 
+                         <a
+                              className="underline"
+                              href="https://vocabstream.vercel.app"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                            <strong>VocabStream</strong>
+                          </a>
+                         を開発中です。お楽しみに！
                       </p>
                   
                   </div>
@@ -363,9 +362,10 @@ export default function ExtraPage() {
           </section>
 
           {/* Footer */}
-          <footer className="mt-10 text-center text-sm text-gray-700">
-            © {new Date().getFullYear()} Project Fluence — 黒木 勇人
+          <footer className="mt-10 text-sm text-gray-700">
+           All content © {new Date().getFullYear()} Project Fluence — 黒木 勇人
           </footer>
+          <Link href="/privacy" target="_blank">Privacy Policy</Link>
         </div>
       </main>
     </>

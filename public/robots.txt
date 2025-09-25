@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://projectfluence.vercel.app/sitemap.xml
