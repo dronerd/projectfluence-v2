@@ -17,15 +17,12 @@ export default function ExtraPage() {
     <>
       {/* Sticky Banner */}
       <div className="fixed top-0 left-0 w-full bg-blue-600 text-white py-7 z-50 shadow-md">
-        {/* Make the inner content narrower on small screens so the grey background shows at sides */}
         <div className="max-w-[880px] sm:max-w-3xl md:max-w-7xl mx-auto px-4 sm:px-7 relative flex items-center">
-          {/* Left: clickable logo that stays on the same page and scrolls to top */}
           <div className="absolute left-4 flex items-center z-50">
             <button
               onClick={scrollToTop}
               aria-label="Scroll to top"
-              className="flex items-center gap-3 focus:outline-none
-                        transform transition-transform duration-200 active:scale-105"
+              className="flex items-center gap-3 focus:outline-none transform transition-transform duration-200 active:scale-105"
             >
               <Image
                 src="/images/logo.png"
@@ -37,43 +34,37 @@ export default function ExtraPage() {
             </button>
           </div>
 
-          {/* Center: profile button (scroll to top only)
-              Use two variants: short on small screens, full on md+ */}
           <div className="absolute inset-x-0 flex justify-center pointer-events-none">
             <button
               onClick={scrollToTop}
               aria-label="Scroll to top"
               className="pointer-events-auto text-base font-normal hover:underline bg-transparent border-none cursor-pointer"
             >
-              {/* Short label for small screens */}
-              <span className="inline md:hidden text-lg">ページトップへ</span>
-              {/* Full label for md and above */}
+              <span className="inline md:hidden text-lg">ページトップ</span>
               <span className="hidden md:inline text-xl">ページトップへ - Project Fluence</span>
             </button>
           </div>
 
-          {/* Right: optional small link */}
           <div className="absolute right-4">
             <Link
               href="https://note.com/projectfluence"
               target="_blank"
-              className="ml-auto px-4 py-2 text-sm font-medium text-white bg-blue-900 rounded-full shadow-md 
-                        transform transition-transform duration-200 hover:bg-blue-700 hover:scale-105 active:scale-110 whitespace-nowrap"
+              className="ml-auto px-4 py-2 text-sm font-medium text-white bg-blue-900 rounded-full shadow-md transform transition-transform duration-200 hover:bg-blue-700 hover:scale-105 active:scale-110 whitespace-nowrap"
               rel="noopener noreferrer"
             >
-              Noteをフォロー
+              {/* Small screens show shorter label */}
+              <span className="inline md:hidden">Note</span>
+              <span className="hidden md:inline">Noteをフォロー</span>
             </Link>
           </div>
         </div>
       </div>
 
-      {/* Main: keep page background neutral so left/right gray shows.
-          Narrow the inner wrapper on small screens so visible side gutters remain. */}
       <main className="w-full min-h-screen bg-neutral-200 px-1 pt-24 pb-12">
         <div className="max-w-[880px] sm:max-w-3xl md:max-w-7xl mx-auto px-4">
-          {/* Hero */}
           <section className="bg-white rounded-2xl shadow-lg p-6 md:p-12 grid md:grid-cols-3 gap-6 items-center">
-            <div className="md:col-span-2">
+            {/* 左/中央部分：ここに min-w-0 を追加 */}
+            <div className="md:col-span-2 min-w-0">
               <div className="flex items-center gap-4 md:gap-6">
                 <div className="w-20 h-20 md:w-28 md:h-28 relative flex-shrink-0">
                   <Image
@@ -85,16 +76,17 @@ export default function ExtraPage() {
                   />
                 </div>
 
-                <div>
+                <div className="min-w-0">
                   <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold leading-tight">Project Fluence</h1>
                   <p className="text-sm md:text-base text-gray-600 mt-1">～あなたの未来に、英語の力を～</p>
                 </div>
               </div>
 
-              <p className="mt-6 text-base md:text-lg">
+              {/* 重要：ここに break / max-w を入れる */}
+              <p className="mt-6 text-base md:text-lg break-words whitespace-normal max-w-full">
                 <strong>Project Fluence</strong>は、英語＋専門分野の力で夢を実現する人を増やすことを目指しています。
               </p>
-              <p className="text-base md:text-lg mb-1">
+              <p className="text-base md:text-lg mb-1 break-words whitespace-normal max-w-full">
                 私（
                 <a
                   className="underline"
@@ -108,31 +100,25 @@ export default function ExtraPage() {
               </p>
 
               <div className="mt-6 flex flex-wrap gap-3">
-                <a
-                  href="#about"
-                  className="inline-block bg-blue-800 text-white px-4 py-2 rounded-lg shadow hover:brightness-95"
-                >
-                 英語学習アプリ
+                <a href="#about" className="inline-block bg-blue-800 text-white px-4 py-2 rounded-lg shadow hover:brightness-95">
+                  英語学習アプリ
                 </a>
-                <a
-                  href="#notes"
-                  className="inline-block bg-blue-800 text-white px-4 py-2 rounded-lg shadow hover:brightness-95"
-                >
+                <a href="#notes" className="inline-block bg-blue-800 text-white px-4 py-2 rounded-lg shadow hover:brightness-95">
                   最近のNote記事
                 </a>
-                <a
-                  href="#method"
-                  className="inline-block bg-blue-800 text-white px-4 py-2 rounded-lg shadow hover:brightness-95"
-                >
+                <a href="#method" className="inline-block bg-blue-800 text-white px-4 py-2 rounded-lg shadow hover:brightness-95">
                   効果的な英語学習方法
                 </a>
               </div>
             </div>
 
-            <div className="md:col-span-1 bg-neutral-100 rounded-xl p-4 shadow-inner">
+            {/* 右サイド（プロフィールカード）: 幅は w-full / min-w-0 を追加 */}
+            <div className="md:col-span-1 bg-neutral-100 rounded-xl p-4 shadow-inner w-full min-w-0">
               <h3 className="text-lg uppercase text-gray-700"><strong>プロジェクト開発・運営者</strong></h3>
-              <div className="mt-4 flex items-center gap-4">
-                <div className="w-16 h-16 relative rounded-full overflow-hidden bg-gray-800">
+
+              {/* flex 親に min-w-0 を付けて子のテキストが折り返せるようにする */}
+              <div className="mt-4 flex items-center gap-4 min-w-0">
+                <div className="w-16 h-16 relative rounded-full overflow-hidden bg-gray-800 flex-shrink-0">
                   <Image
                     src="/images/profile2.JPG"
                     alt="Yuto Kuroki profile"
@@ -141,30 +127,33 @@ export default function ExtraPage() {
                     className="object-cover"
                   />
                 </div>
-                <div>
+
+                {/* テキスト領域にも min-w-0 を追加して折り返しを許可 */}
+                <div className="min-w-0">
                   <Link
-                    aria-label="Scroll to top"
+                    aria-label="Profile"
                     href="https://yutokuroki.vercel.app"
-                    className="font-medium text-2xl"
+                    className="font-medium text-lg md:text-2xl block truncate"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >
+                  >
                     <strong>黒木勇人</strong>
                   </Link>
-                  <p className="text-sm text-gray-800">早稲田大学 基幹理工学部 1年</p>
-                  <p className="text-sm text-gray-800">yutokuroki.projectfluence@gmail.com</p>
+                  <p className="text-sm text-gray-800 whitespace-normal break-words">早稲田大学 基幹理工学部 1年</p>
+                  <p className="text-sm text-gray-800 whitespace-normal break-words">yutokuroki.projectfluence@gmail.com</p>
                 </div>
               </div>
 
-              <p className="mt-4 text-sm text-gray-800">英語を英語で学ぶ効率的な方法を追求し、中学2年時に英検1級に受験者の上位1%のスコアで合格。
+              <p className="mt-4 text-sm text-gray-800 whitespace-normal break-words">
+                英語を英語で学ぶ効率的な方法を追求し、中学2年時に英検1級に受験者の上位1%のスコアで合格。
                 現在はTOEFL iBT 116/120点, TOEIC満点 990/990点。ドイツ語も自習し、ネイティブレベル(Goethe Zertifikat C1)を達成。
                 専門は情報工学で、ISEFなどの国際イベントにて研究発表の経験を持つ。
               </p>
-              <div>
+
+              <div className="mt-3">
                 <Link
-                  aria-label="Scroll to top"
                   href="https://yutokuroki.vercel.app"
-                  className="underline text-lg"
+                  className="underline text-lg break-words"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -173,7 +162,7 @@ export default function ExtraPage() {
                 <br/>
                 <Link
                   href="https://www.linkedin.com/in/yuto-kuroki-a5b32b383/"
-                  className="underline text-lg"
+                  className="underline text-lg break-words"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -361,7 +350,6 @@ export default function ExtraPage() {
             </div>
           </section>
 
-          {/* Footer */}
           <footer className="mt-10 text-sm text-gray-700">
            All content © {new Date().getFullYear()} Project Fluence — 黒木 勇人
           </footer>
