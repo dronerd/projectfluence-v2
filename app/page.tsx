@@ -139,7 +139,7 @@ export default function ExtraPage() {
                   >
                     <strong>黒木勇人</strong>
                   </Link>
-                  <p className="text-sm text-gray-800 whitespace-normal break-words">早稲田大学 基幹理工学部 1年</p>
+                  <p className="text-sm text-gray-800 whitespace-normal break-words">早稲田大学 基幹理工学部</p>
                   <p className="text-sm text-gray-800 whitespace-normal break-words">yutokuroki.projectfluence@gmail.com</p>
                 </div>
               </div>
