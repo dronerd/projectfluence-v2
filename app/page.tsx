@@ -216,7 +216,7 @@ export default function ExtraPage() {
                   >
                   <strong>VocabStream</strong>
                 </a>を近日公開します、お楽しみに！
-                <Link href="https://vocabstream.vercel.app"><Image src="/VocabStream.png" alt="Project Fluence logo" width={200} height={200} className="rounded-md object-cover" /></Link>
+                <Link href="https://vocabstream.vercel.app" target="_blank"><Image src="/VocabStream.png" alt="Project Fluence logo" width={200} height={200} className="rounded-md object-cover" /></Link>
               </p>
             </article>
           </section>
