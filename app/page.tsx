@@ -23,7 +23,8 @@ export default function ExtraPage() {
         setCopied(true);
         setTimeout(() => setCopied(false), 1800);
       } catch (err) {
-        // fallback for older browsers
+        // log the error so it's not an unused-variable lint warning, then fallback for older browsers
+        console.error("Clipboard write failed:", err);
         try {
           const ta = document.createElement("textarea");
           ta.value = text;
@@ -35,8 +36,9 @@ export default function ExtraPage() {
           ta.remove();
           setCopied(true);
           setTimeout(() => setCopied(false), 1800);
-        } catch (e) {
-          // silent fail
+        } catch (innerErr) {
+          // log inner error and show alert
+          console.error("Fallback copy failed:", innerErr);
           alert("コピーに失敗しました。テキストを手動で選択してください。");
         }
       }
@@ -218,7 +220,8 @@ export default function ExtraPage() {
                     rel="noopener noreferrer"
                   >
                   <strong>VocabStream</strong>
-                </a>を近日公開します、お楽しみに！
+                </a>
+                を近日公開します、お楽しみに！
                 <Link href="https://vocabstream.vercel.app" target="_blank"><Image src="/VocabStream.png" alt="Project Fluence logo" width={200} height={200} className="rounded-md object-cover" /></Link>
               </p>
             </article>
@@ -305,16 +308,16 @@ export default function ExtraPage() {
                         <br />
                         例：<strong>Perseverence</strong> (忍耐)
                          <br />
-                        (定義)"Perseverance means keeping on and not giving up, even when something is hard or takes a long time."
+                        (定義)&quot;Perseverance means keeping on and not giving up, even when something is hard or takes a long time.&quot;
                          <br />
-                         (例文) "She showed great perseverance by practicing the piano every day until she finally mastered the song."
+                         (例文) &quot;She showed great perseverance by practicing the piano every day until she finally mastered the song.&quot;
                          <br />
                          (類義語) Determination, Persistence, Dedication, Endurance
                          <br />
                          (対義語) Giving up, Surrender
                         <br />英英辞書・英英単語帳を使い、この学習方法を実践できます。
                         <br />また、ChatGPTなどの生成AIに以下のように質問することも効果的です。
-                        ”Can you give me the definition, an example sentence, synonyms, and antonyms for the word (“ “)? Please use words that are easier than the word itself to explain.”
+                        &quot;Can you give me the definition, an example sentence, synonyms, and antonyms for the word (&quot;&quot;)? Please use words that are easier than the word itself to explain.&quot;
                         <br />
                         <br />
                         この学習法を効率化するために、英単語アプリ 
