@@ -88,6 +88,18 @@ export default function ExtraPage() {
       label: "学んだ表現のリスト化",
       text: `Can you create a list of vocabularies and phrases you taught me today that might be useful in the future?`
     }
+
+  ];
+
+  const prompts2 = [
+    {
+      label: "単語の説明を求める",
+      text : "Can you give me the definition, an example sentence, synonyms, and antonyms for the word (“ “)? Please use words that are easier than the word itself to explain."
+    },
+    {
+      label: "自作した例文の添削",
+      text : "Can you correct and improve this sentence for me?"
+    }
   ];
 
   return (
@@ -316,9 +328,13 @@ export default function ExtraPage() {
                          <br />
                          (対義語) Giving up, Surrender
                         <br />英英辞書・英英単語帳を使い、この学習方法を実践できます。
-                        <br />また、ChatGPTなどの生成AIに以下のように質問することも効果的です。
-                        &quot;Can you give me the definition, an example sentence, synonyms, and antonyms for the word (&quot;&quot;)? Please use words that are easier than the word itself to explain.&quot;
                         <br />
+                        <br />また、ChatGPTなどの生成AIに以下のように質問することも効果的です。
+                        <div className="grid gap-3">
+                          {prompts2.map((p, i) => (
+                            <CopyablePrompt key={i} label={p.label} text={p.text} />
+                          ))}
+                        </div>
                         <br />
                         この学習法を効率化するために、英単語アプリ 
                          <a
