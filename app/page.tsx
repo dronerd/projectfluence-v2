@@ -255,7 +255,7 @@ export default function ExtraPage() {
                   >
                   <strong>VocabStream</strong>
                 </a>
-                を安定して動作する機能のみ公開しています。お楽しみに！
+                は、英単語を英語の定義と例文と組み合わせて効率的に学ぶことを可能にします。現在は安定して動作する機能のみを公開しています。今後のアップデートをお楽しみに！
                 <Link href="https://vocabstream.vercel.app" target="_blank"><Image src="/VocabStream.png" alt="Project Fluence logo" width={200} height={200} className="rounded-md object-cover" /></Link>
               </p>
             </article>
@@ -378,7 +378,7 @@ export default function ExtraPage() {
                           >
                           <strong>VocabStream</strong>
                           </a>
-                         を開発中です。お楽しみに！
+                          を安定して動作する機能のみ公開しています。今後のアップデートをお楽しみに！
                       </p>
                   </div>
 
