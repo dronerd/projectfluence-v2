@@ -94,12 +94,34 @@ export default function ExtraPage() {
   const prompts2 = [
     {
       label: "単語の説明を求める",
-      text : "Can you give me the definition, an example sentence, synonyms, and antonyms for the word (“ “)? Please use words that are easier than the word itself to explain."
+      text : "Can you give me the definition, an example sentence, synonyms, and antonyms for the word (\" \")? Please use words that are easier than the word itself to explain."
     },
     {
       label: "自作した例文の添削",
       text : "Can you correct and improve this sentence for me?"
     }
+  ];
+
+  // --- Note articles (added as stylish cards) ---
+  const noteArticles = [
+    {
+      key: "Note Article1",
+      href: "#",
+      title:
+        "大学生の自己紹介 ― 黒木勇人｜Project Fluence｜英語アプリ｜英検１級・TOEIC満点・TOEFL116/120・ドイツ語上級",
+    },
+    {
+      key: "Note Article2",
+      href: "#",
+      title:
+        "日本にいながらネイティブ級へ─英語力を効果的に伸ばす学習方法｜英検１級・TOEIC満点・TOEFL116/120・ドイツ語上級",
+    },
+    {
+      key: "Note Article3",
+      href: "#",
+      title:
+        "英語学習にも応用できる！第２外国語（ドイツ語）から見えてきた効果的な言語学習法",
+    },
   ];
 
   return (
@@ -233,18 +255,29 @@ export default function ExtraPage() {
                   >
                   <strong>VocabStream</strong>
                 </a>
-                を近日公開します、お楽しみに！
+                を安定して動作する機能のみ公開しています。お楽しみに！
                 <Link href="https://vocabstream.vercel.app" target="_blank"><Image src="/VocabStream.png" alt="Project Fluence logo" width={200} height={200} className="rounded-md object-cover" /></Link>
               </p>
             </article>
           </section>
 
-          {/* Recent Notes */}
+          {/* Recent Notes - updated: show 3 stylish rectangular cards */}
           <section id="notes" className="mt-8 bg-white rounded-2xl p-6 shadow">
             <h2 className="text-2xl font-bold">最近のNote記事</h2>
-            <ul className="mt-4 grid sm:grid-cols-2 gap-3">
-              <li>近日公開</li>
-              {/* or map note items here */}
+
+            <ul className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+              {noteArticles.map((note) => (
+                <li key={note.key} className="py-0.5">
+                  <article className="h-full bg-neutral-50 border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col justify-between">
+                    <div>
+                      <div className="inline-block px-2 py-1 text-xs font-semibold uppercase rounded-md bg-blue-50 text-blue-700 mb-2">Note</div>
+                      <a href={note.href} target="_blank" rel="noopener noreferrer" className="text-sm md:text-base font-medium underline break-words">
+                        {note.title}
+                      </a>
+                    </div>
+                  </article>
+                </li>
+              ))}
             </ul>
           </section>
 
