@@ -17,13 +17,11 @@ export default function ExtraPage() {
     const [copied, setCopied] = useState(false);
 
     async function handleCopy() {
-      // primary: navigator.clipboard
       try {
         await navigator.clipboard.writeText(text);
         setCopied(true);
         setTimeout(() => setCopied(false), 1800);
       } catch (err) {
-        // log the error so it's not an unused-variable lint warning, then fallback for older browsers
         console.error("Clipboard write failed:", err);
         try {
           const ta = document.createElement("textarea");
@@ -37,7 +35,6 @@ export default function ExtraPage() {
           setCopied(true);
           setTimeout(() => setCopied(false), 1800);
         } catch (innerErr) {
-          // log inner error and show alert
           console.error("Fallback copy failed:", innerErr);
           alert("コピーに失敗しました。テキストを手動で選択してください。");
         }
@@ -106,17 +103,16 @@ export default function ExtraPage() {
   const noteArticles = [
     {
       key: "Note Article1",
-      href: "#",
+      href: "https://note.com/projectfluence/n/n05e8b127014f",
       title:
         "大学生の自己紹介 ― 黒木勇人｜Project Fluence｜英語アプリ｜英検１級・TOEIC満点・TOEFL116/120・ドイツ語上級",
     },
     {
       key: "Note Article2",
-      href: "#",
+      href: "https://note.com/projectfluence/n/nd806d6fa00ec",
       title:
         "日本にいながらネイティブ級へ─英語力を効果的に伸ばす学習方法｜英検１級・TOEIC満点・TOEFL116/120・ドイツ語上級",
     },
-    
   ];
 
   return (
@@ -193,7 +189,7 @@ export default function ExtraPage() {
               </div>
             </div>
 
-            <div className="md:col-span-1 bg-neutral-100 rounded-xl p-4 shadow-inner w-full min-w-0">
+            <aside className="md:col-span-1 bg-neutral-100 rounded-xl p-4 shadow-inner w-full min-w-0">
               <h3 className="text-lg uppercase text-gray-700"><strong>プロジェクト創設/開発・運営</strong></h3>
 
               <div className="mt-4 flex items-center gap-4 min-w-0">
@@ -215,7 +211,7 @@ export default function ExtraPage() {
                 <br/>
                 <Link href="https://www.linkedin.com/in/yuto-kuroki-a5b32b383/" className="underline text-lg break-words" target="_blank" rel="noopener noreferrer">→<strong>LinkedIn</strong></Link>
               </div>
-            </div>
+            </aside>
           </section>
 
           {/* About Section */}
@@ -224,35 +220,35 @@ export default function ExtraPage() {
               <h2 className="text-2xl font-bold">About</h2>
               <div className="flex items-center gap-3"></div>
 
-              <h2 className="mt-2 text-lg text-gray-700 leading-relaxed whitespace-pre-line">
+              <div className="mt-2 text-lg text-gray-700 leading-relaxed whitespace-pre-line">
                 <p className="text-lg text-gray-700 leading-relaxed mb-1">
                  効率的に英語を学び、世界で活躍する力を身につける。    
-                 <br/>
-                 <strong>Project Fluence</strong>
-                 はそんな学びを応援する個人プロジェクトです。  
-                 あなたの未来に、英語の力を。
-                 </p>
-                <br/>
-                ＊大学生が趣味として開発・運営を行っている個人プロジェクトであるため、
-                アプリの機能が安定していない可能性があります。ご意見やフィードバックは大歓迎です！
-              </h2>
+                </p>
+                <p className="mb-2"><strong>Project Fluence</strong> はそんな学びを応援する個人プロジェクトです。  あなたの未来に、英語の力を。</p>
+
+                <p className="mt-2">＊大学生が趣味として開発・運営を行っている個人プロジェクトであるため、アプリの機能が安定していない可能性があります。ご意見やフィードバックは大歓迎です！</p>
+              </div>
             </article>
 
             <article className="bg-white rounded-2xl p-6 shadow">
               <h2 className="text-2xl font-semibold mb-4">英語学習アプリ</h2>
-              <p className="mt-2 text-neutral-900 text-lg">
-                英単語学習アプリ
-                <a
-                    className="underline"
-                    href="https://vocabstream.vercel.app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                  <strong>VocabStream</strong>
-                </a>
-                は、英単語を英語の定義と例文と組み合わせて効率的に学ぶことを可能にします。現在は安定して動作する機能のみを公開しています。今後のアップデートをお楽しみに！
-                <Link href="https://vocabstream.vercel.app" target="_blank"><Image src="/VocabStream.png" alt="Project Fluence logo" width={200} height={200} className="rounded-md object-cover" /></Link>
-              </p>
+              <div className="mt-2 text-neutral-900 text-lg">
+                <p>
+                  英単語学習アプリ
+                  <a
+                      className="underline"
+                      href="https://vocabstream.vercel.app"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                    <strong>VocabStream</strong>
+                  </a>
+                   は、英単語を英語の定義と例文と組み合わせて効率的に学ぶことを可能にします。現在は安定して動作する機能のみを公開しています。今後のアップデートをお楽しみに！
+                </p>
+                <div className="mt-3">
+                  <Link href="https://vocabstream.vercel.app" target="_blank"><Image src="/VocabStream.png" alt="Project Fluence logo" width={200} height={200} className="rounded-md object-cover" /></Link>
+                </div>
+              </div>
             </article>
           </section>
 
@@ -279,28 +275,18 @@ export default function ExtraPage() {
           {/* なぜ英語を学ぶのか */}
           <section id="english-motivation" className="mt-8 bg-white rounded-2xl p-6 shadow">
             <h2 className="text-2xl font-bold">なぜ英語を学ぶのか</h2>
-            <p className="mt-2 text-gray-700 leading-relaxed">
-              英語を学ぶことで出会える人や文化、広がる可能性は、学習の努力をはるかに上回る価値を持っています。
-              <strong>英語はまさに「一生もののスキル」です。</strong>
-              <br />
-              中高では成績や受験に、大学では授業や研究に、そして社会人になれば海外とのやり取りや情報収集に大きな力を発揮します。
-              翻訳を待たずに世界中の情報にアクセスでき、キャリアや人生の選択肢を大きく広げてくれるのです。
-              <strong>これほどリターンの大きい学習分野は他に多くありません。</strong>
-              <br />
-              もちろん、英語学習は時に大変で、思わず投げ出したくなる瞬間もあるでしょう。
-              しかし、コツコツ続けていけば必ず「自分の言葉で伝えられる」日がやってきます。
-              そのときの達成感は何ものにも代えがたいはずです。
-              そして英語を通じて海外の人とつながれれば、新しい価値観や考え方に触れ、自分の世界も大きく広がっていきます。
-            </p>
+            <div className="mt-2 text-gray-700 leading-relaxed">
+              <p>英語を学ぶことで出会える人や文化、広がる可能性は、学習の努力をはるかに上回る価値を持っています。</p>
+              <p><strong>英語はまさに「一生もののスキル」です。</strong></p>
+              <p>中高では成績や受験に、大学では授業や研究に、そして社会人になれば海外とのやり取りや情報収集に大きな力を発揮します。翻訳を待たずに世界中の情報にアクセスでき、キャリアや人生の選択肢を大きく広げてくれるのです。</p>
+              <p><strong>これほどリターンの大きい学習分野は他に多くありません。</strong></p>
+              <p>もちろん、英語学習は時に大変で、思わず投げ出したくなる瞬間もあるでしょう。しかし、コツコツ続けていけば必ず「自分の言葉で伝えられる」日がやってきます。そのときの達成感は何ものにも代えがたいはずです。そして英語を通じて海外の人とつながれれば、新しい価値観や考え方に触れ、自分の世界も大きく広がっていきます。</p>
+            </div>
           </section>
 
           <section id="method" className="mt-8 bg-white rounded-2xl p-6 shadow"> 
-            <h3 className="text-2xl font-semibold mb-2">効果的な英語学習方法
-              <p className="text-sm mt-2 font-semibold text-gray-800">
-                (＊詳しくは
-                <Link href="https://note.com/projectfluence" className="underline text-lg break-words" target="_blank" rel="noopener noreferrer">Note</Link>
-                をご覧ください)</p>
-            </h3>
+            <h3 className="text-2xl font-semibold mb-2">効果的な英語学習方法</h3>
+            <p className="text-sm mt-2 font-semibold text-gray-800">(＊詳しくは <Link href="https://note.com/projectfluence" className="underline text-lg break-words" target="_blank" rel="noopener noreferrer">Note</Link> をご覧ください)</p>
 
             <div className="mb-8">
               <p className="text-gray-900 mb-2">多くの日本人の英語学習には２つの特徴があります。</p>
@@ -318,53 +304,46 @@ export default function ExtraPage() {
                 <li>思考が翻訳で遅くなる</li>
                 <li>言いたいことが出てこない</li>
               </ul>
-              <p className="text-gray-700">
-                といった問題が残ります。文法中心だと一語一句を日本語に変換し、文法の正しさを気にしすぎてしまうのです。
-              </p>
+              <p className="text-gray-700">といった問題が残ります。文法中心だと一語一句を日本語に変換し、文法の正しさを気にしすぎてしまうのです。</p>
 
-              <p className="text-gray-700 leading-relaxed">
-                <strong>本質的な英語力</strong>とは、日本語と同じように意味をそのまま理解し、アイデアを直接言葉にできること。
-                日本語の文をいちいち分解しないように、英語も自然に理解・発信できる状態が理想です。
-              </p>
+              <p className="text-gray-700 leading-relaxed"><strong>本質的な英語力</strong>とは、日本語と同じように意味をそのまま理解し、アイデアを直接言葉にできること。日本語の文をいちいち分解しないように、英語も自然に理解・発信できる状態が理想です。</p>
             </div>
 
             <div>
-              <h5 className="text-2xl font-semibold mb-2">英語を効果的に学ぶ３つの方法</h5>
-              <p><strong>＊
-                <Link href="https://note.com/projectfluence" className="underline text-lg break-words" target="_blank" rel="noopener noreferrer">Note</Link>
-                でさらに詳しくご紹介しています</strong></p>
+              <h4 className="text-2xl font-semibold mb-2">英語を効果的に学ぶ３つの方法</h4>
+              <p><strong>＊ <Link href="https://note.com/projectfluence" className="underline text-lg break-words" target="_blank" rel="noopener noreferrer">Note</Link> でさらに詳しくご紹介しています</strong></p>
               <div className="grid mt-2 md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-6">
                   <div className="p-4 bg-gray-100 rounded-lg">
                     <p className="mt-1 text-xl"><strong>1: 英単語は「英語で」学ぶ</strong></p>
-                    <p className="mt-1">英単語を日本語訳で覚えるのではなく、<strong>英語の定義や例文と結びつけて学ぶ</strong>ことをおすすめします。
-                     これは、私たちが日本語の知らない単語を国語辞典で調べ、よりやさしい日本語で説明を理解するのと同じ仕組みです。
-                      英語の定義や例文と結び付けて学ぶと、以下のような細かい部分が分かるようになるというメリットもあります。
-                    </p>
-                      <p>・どんな場面で使えるのか</p>
-                      <p>・どんな文で自然に使われるのか</p>
-                      <p>・細かなニュアンスの違いは何か</p>
-                      <p className="mt-1">
-                        <br />
-                        例：<strong>Perseverence</strong> (忍耐)
-                         <br />
-                        (定義)&quot;Perseverance means keeping on and not giving up, even when something is hard or takes a long time.&quot;
-                         <br />
-                         (例文) &quot;She showed great perseverance by practicing the piano every day until she finally mastered the song.&quot;
-                         <br />
-                         (類義語) Determination, Persistence, Dedication, Endurance
-                         <br />
-                         (対義語) Giving up, Surrender
-                        <br />英英辞書・英英単語帳を使い、この学習方法を実践できます。
-                        <br />
-                        <br />また、ChatGPTなどの生成AIに以下のように質問することも効果的です。
+                    <div className="mt-1">
+                      <p>英単語を日本語訳で覚えるのではなく、<strong>英語の定義や例文と結びつけて学ぶ</strong>ことをおすすめします。これは、私たちが日本語の知らない単語を国語辞典で調べ、よりやさしい日本語で説明を理解するのと同じ仕組みです。英語の定義や例文と結び付けて学ぶと、以下のような細かい部分が分かるようになるというメリットもあります。</p>
+
+                      <ul className="list-disc list-inside mt-2">
+                        <li>どんな場面で使えるのか</li>
+                        <li>どんな文で自然に使われるのか</li>
+                        <li>細かなニュアンスの違いは何か</li>
+                      </ul>
+
+                      <div className="mt-2">
+                        <p className="mt-1">
+                          例：<strong>Perseverence</strong> (忍耐)
+                        </p>
+                        <p>(定義) "Perseverance means keeping on and not giving up, even when something is hard or takes a long time."</p>
+                        <p>(例文) "She showed great perseverance by practicing the piano every day until she finally mastered the song."</p>
+                        <p>(類義語) Determination, Persistence, Dedication, Endurance</p>
+                        <p>(対義語) Giving up, Surrender</p>
+
+                        <p className="mt-2">英英辞書・英英単語帳を使い、この学習方法を実践できます。</p>
+                        <p className="mt-2">また、ChatGPTなどの生成AIに以下のように質問することも効果的です。</p>
+
                         <div className="grid gap-3">
                           {prompts2.map((p, i) => (
                             <CopyablePrompt key={i} label={p.label} text={p.text} />
                           ))}
                         </div>
-                        <br />
-                        この学習法を効率化するために、英単語アプリ 
+
+                        <p className="mt-2">この学習法を効率化するために、英単語アプリ
                          <a
                           className="underline"
                           href="https://vocabstream.vercel.app"
@@ -374,45 +353,45 @@ export default function ExtraPage() {
                           <strong>VocabStream</strong>
                           </a>
                           を安定して動作する機能のみ公開しています。今後のアップデートをお楽しみに！
-                      </p>
+                        </p>
+                      </div>
+                    </div>
                   </div>
 
                   <div className="p-4 bg-gray-100 rounded-lg">
                     <p className="mt-1 text-xl"><strong>2: 英語のインプットを増やす</strong></p>
-                    <p className="mt-1">英語力を本質的に伸ばすには、やはり <strong>リアルなインプット</strong> が欠かせません。
-                    <br />リスニングには、<strong>「日本語ですでに何度も観たことのあるお気に入りの映画」を英語で視聴する</strong>ことをお勧めしています。
-                    <br />リーディングには、<strong>「日本語で読んだことのあるお気に入りの本を英語で読む」</strong>ことをお勧めしています。
-                    <br />ストーリーを知っている分、日本語の訳さずに、英語の音声や文と意味を結びつけやすくなります。   
-                    </p>
-                    <br />
-                    <strong>注意点：</strong>
-                        <p>・日本語字幕や翻訳に頼らない（結局日英変換の学習になってしまう）</p>
-                        <p>・文法を過剰に分析しない（文を丸ごと意味として理解する練習に集中する）</p>
-                        <p className="mt-1">
-                        <br />通勤・通学時間などを使えば、1日で１時間のインプットとして、1年で200時間以上のインプットが可能です。
-                        継続のカギはモチベーションです。
-                      </p>
+                    <div className="mt-1">
+                      <p>英語力を本質的に伸ばすには、やはり <strong>リアルなインプット</strong> が欠かせません。リスニングには、<strong>「日本語ですでに何度も観たことのあるお気に入りの映画」を英語で視聴する</strong>ことをお勧めしています。リーディングには、<strong>「日本語で読んだことのあるお気に入りの本を英語で読む」</strong>ことをお勧めしています。ストーリーを知っている分、日本語の訳さずに、英語の音声や文と意味を結びつけやすくなります。</p>
+
+                      <div className="mt-2">
+                        <p className="font-semibold">注意点：</p>
+                        <ul className="list-disc list-inside mt-1">
+                          <li>日本語字幕や翻訳に頼らない（結局日英変換の学習になってしまう）</li>
+                          <li>文法を過剰に分析しない（文を丸ごと意味として理解する練習に集中する）</li>
+                        </ul>
+
+                        <p className="mt-1">通勤・通学時間などを使えば、1日で１時間のインプットとして、1年で200時間以上のインプットが可能です。継続のカギはモチベーションです。</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
                 {/* ここでコピー可能な依頼文ブロックを並べる */}
                 <div className="p-4 bg-gray-100 rounded-lg space-y-3">
                   <p className="mt-1 text-xl"><strong>3: 生成AIを使ってアウトプットの練習をする</strong></p>
-                  <p className="mt-1">アウトプットの経験を積むには、生成AIとスピーキング・ライティングを練習することがおすすめです。
-                    <br />特におすすめなのが、<strong>ChatGPTの活用</strong>です。
-                    「いつでも・どこでも・好きなだけ」 練習できるのが最大のメリットです。
-                    例えば夜の10時、自宅でくつろいでいるときでもスピーキング練習を行うことができます。
-                    私もドイツ語をB1からC1に伸ばす際に活用しました。
-                    <br />
-                    <br />以下の依頼文をコピーして使ってみてください。</p>
+                  <div className="mt-1">
+                    <p>アウトプットの経験を積むには、生成AIとスピーキング・ライティングを練習することがおすすめです。特におすすめなのが、<strong>ChatGPTの活用</strong>です。「いつでも・どこでも・好きなだけ」 練習できるのが最大のメリットです。例えば夜の10時、自宅でくつろいでいるときでもスピーキング練習を行うことができます。私もドイツ語をB1からC1に伸ばす際に活用しました。</p>
 
-                  <div className="grid gap-3">
-                    {prompts.map((p, i) => (
-                      <CopyablePrompt key={i} label={p.label} text={p.text} />
-                    ))}
+                    <p className="mt-2">以下の依頼文をコピーして使ってみてください。</p>
+
+                    <div className="grid gap-3">
+                      {prompts.map((p, i) => (
+                        <CopyablePrompt key={i} label={p.label} text={p.text} />
+                      ))}
+                    </div>
+
+                    <p className="text-xs text-gray-600 mt-2">＊ボタンは安全なコンテキスト（https）でのみ動作する場合があります。古いブラウザ向けのフォールバックも組み込んでいます。</p>
                   </div>
-
-                  <p className="text-xs text-gray-600 mt-2">＊ボタンは安全なコンテキスト（https）でのみ動作する場合があります。古いブラウザ向けのフォールバックも組み込んでいます。</p>
                 </div>
               </div>
             </div>
