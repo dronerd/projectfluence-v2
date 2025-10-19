@@ -52,7 +52,7 @@ export default function ExtraPage() {
           <button
             onClick={handleCopy}
             className="px-3 py-2 text-sm font-medium rounded-full border shadow-sm hover:brightness-95 focus:outline-none"
-            aria-label={`Copy prompt${label ? `: ${label}` : ""}`}>
+            aria-label={`Copy prompt${label ? `: ${label}` : ''}`}>
             {copied ? "Copied" : "Copy"}
           </button>
         </div>
@@ -85,13 +85,13 @@ export default function ExtraPage() {
       label: "学んだ表現のリスト化",
       text: `Can you create a list of vocabularies and phrases you taught me today that might be useful in the future?`
     }
-
   ];
 
   const prompts2 = [
     {
       label: "単語の説明を求める",
-      text : "Can you give me the definition, an example sentence, synonyms, and antonyms for the word (\" \")? Please use words that are easier than the word itself to explain."
+      // use single quotes in the string so the inner double quotes are literal, but they will be rendered inside <pre>
+      text : 'Can you give me the definition, an example sentence, synonyms, and antonyms for the word (" ")? Please use words that are easier than the word itself to explain.'
     },
     {
       label: "自作した例文の添削",
@@ -329,8 +329,8 @@ export default function ExtraPage() {
                         <p className="mt-1">
                           例：<strong>Perseverence</strong> (忍耐)
                         </p>
-                        <p>(定義) "Perseverance means keeping on and not giving up, even when something is hard or takes a long time."</p>
-                        <p>(例文) "She showed great perseverance by practicing the piano every day until she finally mastered the song."</p>
+                        <p>(定義) &quot;Perseverance means keeping on and not giving up, even when something is hard or takes a long time.&quot;</p>
+                        <p>(例文) &quot;She showed great perseverance by practicing the piano every day until she finally mastered the song.&quot;</p>
                         <p>(類義語) Determination, Persistence, Dedication, Endurance</p>
                         <p>(対義語) Giving up, Surrender</p>
 
