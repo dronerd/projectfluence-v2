@@ -179,7 +179,16 @@ export default function ExtraPage() {
                 >
                   <strong>黒木勇人</strong>
                 </a>
-                ）が効果的な英語学習法をNoteで紹介し、自ら開発した無料の英語学習アプリも提供します。
+                ）が効果的な英語学習法を
+                 <a
+                      className="underline"
+                      href="https://note.com/projectfluence"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                    <strong>Note</strong>
+                  </a>
+                で紹介し、自ら開発した無料の英語学習アプリも提供します。
               </p>
 
               <div className="mt-6 flex flex-wrap gap-3">
@@ -224,7 +233,17 @@ export default function ExtraPage() {
                 <p className="text-lg text-gray-700 leading-relaxed mb-1">
                  効率的に英語を学び、世界で活躍する力を身につける。    
                 </p>
-                <p className="mb-2"><strong>Project Fluence</strong> はそんな学びを応援する個人プロジェクトです。  あなたの未来に、英語の力を。</p>
+                <p className="mb-2"><strong>Project Fluence</strong> はそんな学びを応援する個人プロジェクトです。 
+                効果的な英語学習法は
+                 <a
+                      className="underline"
+                      href="https://note.com/projectfluence"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                    <strong>Note記事</strong>
+                  </a>
+                  をお読みいただき、無料の英語学習アプリも是非ご活用ください！</p>
 
                 <p className="mt-2">＊大学生が趣味として開発・運営を行っている個人プロジェクトであるため、アプリの機能が安定していない可能性があります。ご意見やフィードバックは大歓迎です！</p>
               </div>
