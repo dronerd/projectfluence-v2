@@ -208,12 +208,14 @@ export default function ExtraPage() {
 
                 <div className="min-w-0">
                   <Link aria-label="Profile" href="https://yutokuroki.vercel.app" className="font-medium text-lg md:text-2xl block truncate" target="_blank" rel="noopener noreferrer"><strong>黒木勇人</strong></Link>
-                  <p className="text-sm text-gray-800 whitespace-normal break-words">早稲田大学 基幹理工学部</p>
+                  <p className="text-sm text-gray-800 whitespace-normal break-words">早稲田大学 基幹理工学部1年</p>
                   <p className="text-sm text-gray-800 whitespace-normal break-words">yutokuroki.projectfluence@gmail.com</p>
                 </div>
               </div>
 
-              <p className="mt-4 text-sm text-gray-800 whitespace-normal break-words">英語を英語で学ぶ効率的な方法を追求し、中学2年時に英検1級に上位1%のスコアで合格。現在はTOEFL iBT 116/120点, TOEIC満点 990/990点。ドイツ語もネイティブレベル(Goethe Zertifikat C1)を達成。専門は情報工学で、ISEFなどの国際イベントにて研究発表の経験を持つ。</p>
+              <p className="mt-4 text-sm text-gray-800 whitespace-normal break-words">        
+              英語を英語で学ぶ方法を追求し、中学2年で英検1級に上位1%のスコアで合格。現在はTOEFL iBT 116点、TOEIC満点（990点）を取得。独学でドイツ語も学び、世界最難関のドイツ語検定試験 Goethe-Zertifikat C2（読む・聞く・話す）とC1（書く）を取得。高校時代から機械学習や最適化アルゴリズムの分野で研究開発に取り組み、学会での受賞やISEFなど国際的な研究発表の経験を持つ。
+              </p>
 
               <div className="mt-3">
                 <Link href="https://yutokuroki.vercel.app" className="underline text-lg break-words" target="_blank" rel="noopener noreferrer">→<strong>プロフィール</strong></Link>
