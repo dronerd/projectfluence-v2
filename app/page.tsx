@@ -113,6 +113,12 @@ export default function ExtraPage() {
       title:
         "日本にいながらネイティブ級へ─英語力を効果的に伸ばす学習方法｜英検１級・TOEIC満点・TOEFL116/120・ドイツ語上級",
     },
+    {
+      key: "Note Article3",
+      href: "https://note.com/projectfluence/n/n751ab984987a",
+      title:
+        "英語学習にも応用できる！第２外国語（ドイツ語）から見えてきた効果的な言語学習法",
+    },
   ];
 
   return (
