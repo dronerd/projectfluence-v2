@@ -161,9 +161,16 @@ export default function ExtraPage() {
           <section className="bg-white rounded-2xl shadow-lg p-6 md:p-12 grid md:grid-cols-3 gap-6 items-center">
             <div className="md:col-span-2 min-w-0">
               <div className="flex items-center gap-4 md:gap-6">
-                <div className="w-20 h-20 md:w-28 md:h-28 relative flex-shrink-0">
-                  <Image src="/images/logo.png" alt="Project Fluence logo large" fill sizes="(max-width: 768px) 80px, 112px" className="object-cover rounded-xl" />
+                <div className="w-20 h-20 md:w-28 md:h-28 relative flex-shrink-0 rounded-lg overflow-hidden">
+                  <Image
+                    src="/images/logo.png"
+                    alt="Project Fluence logo large"
+                    fill
+                    sizes="(max-width: 768px) 80px, 112px"
+                    className="object-cover"
+                  />
                 </div>
+
 
                 <div className="min-w-0">
                   <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold leading-tight">Project Fluence</h1>
@@ -179,7 +186,7 @@ export default function ExtraPage() {
                 私（
                 <a
                   className="underline"
-                  href="https://yutokuroki.vercel.app"
+                  href="https://yutokuroki.vercel.app/ja"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -213,7 +220,7 @@ export default function ExtraPage() {
                 </div>
 
                 <div className="min-w-0">
-                  <Link aria-label="Profile" href="https://yutokuroki.vercel.app" className="font-medium text-lg md:text-2xl block truncate" target="_blank" rel="noopener noreferrer"><strong>黒木勇人</strong></Link>
+                  <Link aria-label="Profile" href="https://yutokuroki.vercel.app/ja" className="font-medium text-lg md:text-2xl block truncate" target="_blank" rel="noopener noreferrer"><strong>黒木勇人</strong></Link>
                   <p className="text-sm text-gray-800 whitespace-normal break-words">早稲田大学 基幹理工学部1年</p>
                   <p className="text-sm text-gray-800 whitespace-normal break-words">yutokuroki.projectfluence@gmail.com</p>
                 </div>
@@ -224,7 +231,7 @@ export default function ExtraPage() {
               </p>
 
               <div className="mt-3">
-                <Link href="https://yutokuroki.vercel.app" className="underline text-lg break-words" target="_blank" rel="noopener noreferrer">→<strong>プロフィール</strong></Link>
+                <Link href="https://yutokuroki.vercel.app/ja" className="underline text-lg break-words" target="_blank" rel="noopener noreferrer">→<strong>プロフィール</strong></Link>
                 <br/>
                 <Link href="https://www.linkedin.com/in/yuto-kuroki-a5b32b383/" className="underline text-lg break-words" target="_blank" rel="noopener noreferrer">→<strong>LinkedIn</strong></Link>
               </div>
@@ -424,7 +431,9 @@ export default function ExtraPage() {
             </div>
           </section>
 
-          <footer className="mt-10 text-sm text-gray-700">All content © {new Date().getFullYear()} Project Fluence — 黒木 勇人</footer>
+          <footer className="mt-10 text-sm text-gray-700">All content © {new Date().getFullYear()} Project Fluence — 黒木 勇人
+           
+          </footer>
           <Link href="/privacy" target="_blank">Privacy Policy</Link>
         </div>
       </main>
