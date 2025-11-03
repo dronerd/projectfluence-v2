@@ -231,7 +231,7 @@ export default function ExtraPage() {
               <div className="mt-3">
                 <Link href="https://yutokuroki.vercel.app/ja" className="underline text-lg break-words" target="_blank" rel="noopener noreferrer">→<strong>プロフィール</strong></Link>
                 <br/>
-                <Link href="https://www.linkedin.com/in/yuto-kuroki-a5b32b383/" className="underline text-lg break-words" target="_blank" rel="noopener noreferrer">→<strong>LinkedIn</strong></Link>
+                <Link href="https://www.linkedin.com/in/yutokuroki/" className="underline text-lg break-words" target="_blank" rel="noopener noreferrer">→<strong>LinkedIn</strong></Link>
               </div>
             </aside>
           </section>
