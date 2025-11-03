@@ -161,14 +161,12 @@ export default function ExtraPage() {
           <section className="bg-white rounded-2xl shadow-lg p-6 md:p-12 grid md:grid-cols-3 gap-6 items-center">
             <div className="md:col-span-2 min-w-0">
               <div className="flex items-center gap-4 md:gap-6">
-                <div className="w-20 h-20 md:w-28 md:h-28 relative flex-shrink-0 rounded-lg overflow-hidden">
-                  <Image
-                    src="/images/logo.png"
-                    alt="Project Fluence logo large"
-                    fill
-                    sizes="(max-width: 768px) 80px, 112px"
-                    className="object-cover"
-                  />
+                <div className="w-20 h-20 md:w-28 md:h-28 relative flex-shrink-0"> 
+                  <Image 
+                  src="/images/logo.png" 
+                  alt="Project Fluence logo large" 
+                  fill sizes="(max-width: 768px) 80px, 112px" 
+                  className="object-cover rounded-xl" /> 
                 </div>
 
 
@@ -215,7 +213,7 @@ export default function ExtraPage() {
               <h3 className="text-lg uppercase text-gray-700"><strong>プロジェクト創設/開発・運営</strong></h3>
 
               <div className="mt-4 flex items-center gap-4 min-w-0">
-                <div className="w-16 h-16 relative rounded-full overflow-hidden bg-gray-800 flex-shrink-0">
+                <div className="w-16 h-16 relative rounded-lg overflow-hidden bg-gray-800 flex-shrink-0">
                   <Image src="/images/profile2.JPG" alt="Yuto Kuroki profile" fill sizes="(max-width: 768px) 64px, 64px" className="object-cover" />
                 </div>
 
