@@ -119,6 +119,12 @@ export default function ExtraPage() {
       title:
         "英語学習にも応用できる！第２外国語（ドイツ語）から見えてきた効果的な言語学習法",
     },
+    {
+      key: "Note Article4",
+      href: "https://note.com/projectfluence/n/nb5ee0137b415",
+      title:
+        "世界最難関の英語検定試験：ケンブリッジ英検C2 Proficiency（CPE）に合格しました！（リーディング・リスニング満点）",
+    },
   ];
 
   return (
