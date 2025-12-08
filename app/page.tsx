@@ -205,7 +205,7 @@ export default function ExtraPage() {
                     >
                     <strong>Note</strong>
                   </a>
-                で紹介し、自ら開発した無料の英語学習アプリも提供します。
+                で紹介し、自ら開発した英語学習アプリも提供します。
               </p>
 
               <div className="mt-6 flex flex-wrap gap-3">
@@ -262,7 +262,7 @@ export default function ExtraPage() {
                     >
                     <strong>Note記事</strong>
                   </a>
-                  をお読みいただき、無料の英語学習アプリも是非ご活用ください！</p>
+                  をお読みいただき、英語学習アプリも是非ご活用ください！</p>
 
                 <p className="mt-2">＊大学生が趣味として開発・運営を行っている個人プロジェクトであるため、アプリの機能が安定していない可能性があります。ご意見やフィードバックは大歓迎です！</p>
               </div>
