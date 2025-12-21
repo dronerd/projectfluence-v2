@@ -16,10 +16,16 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Project Fluence",
   description: "効率的に英語を学び、世界で活躍する力を身につける。Project Fluenceはそんな学びを応援する個人プロジェクトです。 あなたの未来に、英語の力を。",
-  keywords: ["英語学習", "英単語アプリ", "Note", "英語教育", "VocabStream", "SpeakwiseGPT", "Project Fluence", "Yuto Kuroki", "TOEFL", "TOEIC",],
+ 
+  icons: {
+    icon: "/icon.png",        // ← app/icon.png (192x192)
+    apple: "/icon.png",       // iOS Safari 対応（任意だが推奨）
+  },
+ 
+  keywords: ["黒木勇人", "Yuto Kuroki", "早稲田大学", "英語学習", "AI英語アプリ", "Note", "VocabStream", "Project Fluence", "projectfluence", "ProjectFluence", "Projectfluence"],
   authors: [{ name: "黒木 勇人", url: "https://projectfluence.vercel.app",}],
   openGraph: {
-    title: "ProjectFluence ～あなたの未来に、英語の力を～",
+    title: "Project Fluence ～あなたの未来に、英語の力を～",
     description: "効率的に英語を学び、世界で活躍する力を身につける。Project Fluenceはそんな学びを応援する個人プロジェクトです。",
     url: "https://projectfluence.vercel.app",
     siteName: "Project Fluence",
@@ -36,7 +42,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ProjectFluence ～あなたの未来に、英語の力を～",
+    title: "Project Fluence ～あなたの未来に、英語の力を～",
     description: "効率的に英語を学び、世界で活躍する力を身につける。Project Fluenceはそんな学びを応援する個人プロジェクトです。",
     images: ["https://projectfluence.vercel.app/images/logo.png"],
   },
@@ -54,7 +60,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        <Analytics /> {/* 👈 added here */}
+        <Analytics /> 
       </body>
     </html>
   );
