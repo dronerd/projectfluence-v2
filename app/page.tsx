@@ -125,6 +125,12 @@ export default function ExtraPage() {
       title:
         "世界最難関の英語検定試験：ケンブリッジ英検C2 Proficiency（CPE）に合格しました！（リーディング・リスニング満点）",
     },
+    {
+      key: "Note Article5",
+      href: "https://note.com/projectfluence/n/n71bd9003af29",
+      title:
+        "（上級者向け）日本にいながら英語力をさらに高める効果的な方法",
+    },
   ];
 
   return (
