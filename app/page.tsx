@@ -136,12 +136,7 @@ export default function ExtraPage() {
   return (
     <>
       {/* Sticky Banner (same as before) */}
-      <div
-        className={`
-          fixed top-0 left-0 w-full z-50 transition-all duration-300
-        `}
-      >
-
+      <div className="fixed top-0 left-0 w-full bg-blue-600 text-white py-7 z-50 shadow-md">
         <div className="max-w-[880px] sm:max-w-3xl md:max-w-7xl mx-auto px-4 sm:px-7 relative flex items-center">
           <div className="absolute left-4 flex items-center z-50">
             <button
@@ -149,16 +144,7 @@ export default function ExtraPage() {
               aria-label="Scroll to top"
               className="flex items-center gap-3 focus:outline-none transform transition-transform duration-200 active:scale-105"
             >
-              <Image
-                src="/images/logo.png"
-                alt="Project Fluence logo"
-                width={64}
-                height={64}
-                className={`
-                  rounded-full object-cover transition-transform duration-300
-                `}
-              />
-
+              <Image src="/images/logo.png" alt="Project Fluence logo" width={64} height={64} className="rounded-full object-cover" />
             </button>
           </div>
 
@@ -316,7 +302,8 @@ export default function ExtraPage() {
 
             <ul className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
               {noteArticles.map((note) => (
-                  <article key={note.href} className="h-full bg-neutral-50 border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col justify-between">
+                <li key={note.key} className="py-0.5">
+                  <article className="h-full bg-neutral-50 border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col justify-between">
                     <div>
                       <div className="inline-block px-2 py-1 text-xs font-semibold uppercase rounded-md bg-blue-50 text-blue-700 mb-2">Note</div>
                       <a href={note.href} target="_blank" rel="noopener noreferrer" className="text-sm md:text-base font-medium underline break-words">
@@ -324,9 +311,8 @@ export default function ExtraPage() {
                       </a>
                     </div>
                   </article>
+                </li>
               ))}
-
-        
             </ul>
           </section>
 
