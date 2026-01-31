@@ -4,6 +4,20 @@ import React, { useCallback, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
+//ヘッダー：スクロールで縮む・透過する
+import { useEffect } from "react";
+
+const [scrolled, setScrolled] = useState(false);
+
+useEffect(() => {
+  const onScroll = () => {
+    setScrolled(window.scrollY > 40);
+  };
+  window.addEventListener("scroll", onScroll);
+  return () => window.removeEventListener("scroll", onScroll);
+}, []);
+
+
 export default function ExtraPage() {
   const scrollToTop = useCallback((e?: React.MouseEvent<HTMLButtonElement>) => {
     e?.preventDefault?.();
@@ -11,6 +25,44 @@ export default function ExtraPage() {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   }, []);
+
+
+  //スクロールトリガー
+  function Reveal({
+    children,
+    delay = 0,
+  }: {
+    children: React.ReactNode;
+    delay?: number;
+  }) {
+    const ref = React.useRef<HTMLDivElement>(null);
+    const [visible, setVisible] = useState(false);
+
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        ([entry]) => entry.isIntersecting && setVisible(true),
+        { threshold: 0.15 }
+      );
+      if (ref.current) observer.observe(ref.current);
+      return () => observer.disconnect();
+    }, []);
+
+    return (
+      <div
+        ref={ref}
+        className={`
+          transition-all duration-700 ease-out
+          ${visible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-6"}
+        `}
+        style={{ transitionDelay: `${delay}ms` }}
+      >
+        {children}
+      </div>
+    );
+  }
+
 
   // --- Copyable prompt helper component ---
   function CopyablePrompt({ label, text }: { label?: string; text: string }) {
@@ -136,7 +188,15 @@ export default function ExtraPage() {
   return (
     <>
       {/* Sticky Banner (same as before) */}
-      <div className="fixed top-0 left-0 w-full bg-blue-600 text-white py-7 z-50 shadow-md">
+      <div
+        className={`
+          fixed top-0 left-0 w-full z-50 transition-all duration-300
+          ${scrolled
+            ? "bg-white/80 backdrop-blur-md py-3 shadow"
+            : "bg-blue-600 py-7 shadow-md"}
+        `}
+      >
+
         <div className="max-w-[880px] sm:max-w-3xl md:max-w-7xl mx-auto px-4 sm:px-7 relative flex items-center">
           <div className="absolute left-4 flex items-center z-50">
             <button
@@ -144,7 +204,17 @@ export default function ExtraPage() {
               aria-label="Scroll to top"
               className="flex items-center gap-3 focus:outline-none transform transition-transform duration-200 active:scale-105"
             >
-              <Image src="/images/logo.png" alt="Project Fluence logo" width={64} height={64} className="rounded-full object-cover" />
+              <Image
+                src="/images/logo.png"
+                alt="Project Fluence logo"
+                width={64}
+                height={64}
+                className={`
+                  rounded-full object-cover transition-transform duration-300
+                  ${scrolled ? "scale-90" : "scale-100"}
+                `}
+              />
+
             </button>
           </div>
 
@@ -170,6 +240,7 @@ export default function ExtraPage() {
 
       <main className="w-full min-h-screen bg-neutral-200 px-1 pt-24 pb-12">
         <div className="max-w-[880px] sm:max-w-3xl md:max-w-7xl mx-auto px-4">
+          <Reveal>
           <section className="bg-white rounded-2xl shadow-lg p-6 md:p-12 grid md:grid-cols-3 gap-6 items-center">
             <div className="md:col-span-2 min-w-0">
               <div className="flex items-center gap-4 md:gap-6">
@@ -247,6 +318,7 @@ export default function ExtraPage() {
               </div>
             </aside>
           </section>
+          </Reveal>
 
           {/* About Section */}
           <section id="about" className="mt-8 grid md:grid-cols-2 gap-6">
@@ -301,8 +373,8 @@ export default function ExtraPage() {
             <h2 className="text-2xl font-bold">最近のNote記事</h2>
 
             <ul className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-              {noteArticles.map((note) => (
-                <li key={note.key} className="py-0.5">
+              {noteArticles.map((note, i) => (
+                <Reveal key={note.key} delay={i * 120}>
                   <article className="h-full bg-neutral-50 border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col justify-between">
                     <div>
                       <div className="inline-block px-2 py-1 text-xs font-semibold uppercase rounded-md bg-blue-50 text-blue-700 mb-2">Note</div>
@@ -311,8 +383,10 @@ export default function ExtraPage() {
                       </a>
                     </div>
                   </article>
-                </li>
+                </Reveal>
               ))}
+
+        
             </ul>
           </section>
 
