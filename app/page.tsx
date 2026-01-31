@@ -315,8 +315,8 @@ export default function ExtraPage() {
             <h2 className="text-2xl font-bold">最近のNote記事</h2>
 
             <ul className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-              {noteArticles.map((note, i) => (
-                  <article className="h-full bg-neutral-50 border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col justify-between">
+              {noteArticles.map((note) => (
+                  <article key={note.href} className="h-full bg-neutral-50 border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col justify-between">
                     <div>
                       <div className="inline-block px-2 py-1 text-xs font-semibold uppercase rounded-md bg-blue-50 text-blue-700 mb-2">Note</div>
                       <a href={note.href} target="_blank" rel="noopener noreferrer" className="text-sm md:text-base font-medium underline break-words">
